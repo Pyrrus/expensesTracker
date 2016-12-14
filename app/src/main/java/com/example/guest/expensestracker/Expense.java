@@ -5,9 +5,11 @@ package com.example.guest.expensestracker;
  */
 public class Expense {
     private Double cost;
+    private String date;
 
-    public Expense(Double cost) {
+    public Expense(Double cost, String date) {
         this.cost = cost;
+        this.date = date;
     }
 
     public Expense() {
@@ -19,5 +21,13 @@ public class Expense {
 
     public void setCost(Double cost) {
         this.cost = cost;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

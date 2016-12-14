@@ -52,22 +52,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         String output = "";
         Double number;
+        String date;
 
         if (mSpinner.getSelectedItem().toString().equals("Pick a category")) {
             output += "need to pick a category\n";
         }
 
         if (mEdit.getText().toString().isEmpty()) {
-            output += "need a number";
+            output += "need a number\n";
         }
+
+        if (mDate.getText().toString().equals("Pick date")) {
+            output += "need a date";
+        }
+
 
         if (output.equals("")) {
             number = Double.parseDouble(mEdit.getText().toString());
+            date = mDate.getText().toString();
 
             DatabaseReference expensesRef = FirebaseDatabase
                     .getInstance()
                     .getReference(mSpinner.getSelectedItem().toString());
-            expensesRef.push().setValue(new Expense(number));
+            expensesRef.push().setValue(new Expense(number,date));
             Toast.makeText(MainActivity.this, "Saved", Toast.LENGTH_SHORT).show();
 
         } else {
